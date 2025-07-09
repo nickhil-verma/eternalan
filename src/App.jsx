@@ -6,13 +6,14 @@ import BackgroundVideo from "./components/BackgroundVideo";
 import Talent from "./components/Talent";
 import Collection from "./components/Collection";
 import Footer from "./components/Footer";
+import LoadingPage from "./components/LoadingPage";
 
 const App = () => {
   return (
     <div className="relative w-full bg-transparent">
       <BackgroundVideo />
       <Navbar />
-
+      <LoadingPage/>
       <main className="relative z-10">
         <Hero />
         <Hero2 />
