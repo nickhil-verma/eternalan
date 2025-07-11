@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
- 
 
-const BackgroundVideo = () => {
+const BackgroundVideo = ({ url }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -10,13 +9,13 @@ const BackgroundVideo = () => {
         console.warn("Autoplay was prevented:", error);
       });
     }
-  }, []);
+  }, [url]);
 
   return (
     <div className="fixed top-0 left-0 w-full h-full z-[-10] overflow-hidden">
       <video
         ref={videoRef}
-        src="https://assets.mixkit.co/videos/51757/51757-720.mp4"
+        src={url}
         autoPlay
         muted
         loop
@@ -29,3 +28,5 @@ const BackgroundVideo = () => {
 };
 
 export default BackgroundVideo;
+
+        //  https://assets.mixkit.co/videos/51757/51757-720.mp4

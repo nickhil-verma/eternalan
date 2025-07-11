@@ -28,3 +28,18 @@ html, body, #root {
 .footer-clip-path {
   clip-path: polygon(0 0, 100% 8%, 100% 100%, 0% 100%);
 }
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.8s ease-out both;
+}
+

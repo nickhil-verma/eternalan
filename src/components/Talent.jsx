@@ -6,7 +6,7 @@ const Talent = () => {
       {/* Left headline */}
       <div className="text-6xl md:text-7xl uppercase font-extrabold text-white space-y-2">
         <span className="block">We Get</span>
-        <span className="block">Best Music</span>
+        <span className="block">Best Artist</span>
         <span className="block">From the Globe</span>
       </div>
 

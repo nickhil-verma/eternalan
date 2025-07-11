@@ -3,7 +3,7 @@ import { FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="w-full bg-white relative overflow-hidden">
+    <div id="contact" className="w-full bg-white relative overflow-hidden">
       {/* SVG Slant Divider */}
       <div className="w-full h-[100px] -mb-1">
         <svg
