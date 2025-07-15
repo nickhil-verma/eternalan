@@ -26,7 +26,7 @@ const Home = () => (
       <Hero3 />
       <Talent />
       <Sponsor/>
-      <Collection />
+      {/* <Collection /> */}
       <Footer />
     </main>
   </>

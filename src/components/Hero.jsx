@@ -24,18 +24,24 @@ const Hero = () => {
         </a>
       </div>
       <div className="flex flex-col justify-center items-center ">
-        <CountdownTimer className=" " targetDate={concertDate} />
-        <span className="text-white justify-center text-center text-lg">Liyu Zhang (张丽玉),National Centre for the Performing Arts, <br></br>No.2 West Chang'an Avenue, Xicheng District, Beijing, China 100031</span>
-        <div className="flex mt-10 gap-4 flex-wrap">
-  <button className="text-white bg-gradient-to-r from-red-600 to-pink-500 shadow-lg shadow-red-500/30 backdrop-blur-md px-6 py-2 rounded-full font-semibold text-sm sm:text-base transition-transform duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl">
-    Buy Tickets
-  </button>
-
-  <button className="text-red-600 bg-white border border-red-300 shadow-md px-6 py-2 rounded-full font-semibold text-sm sm:text-base transition-transform duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-red-50">
-    RSVP
-  </button>
+        
+        <div className="  text-white p-6 rounded-2xl shadow-lg max-w-3xl mx-auto space-y-4 text-center">
+  
+  <p className="text-lg md:text-xl font-medium   uppercase leading-relaxed">
+    Partners: <span className="font-semibold ">Tencent Music Entertainment Group</span>, <span className="font-semibold">iQIYI, Inc.</span>, <br />
+    and <span className="font-semibold ">Alibaba Digital Media & Entertainment Group</span>
+  </p>
 </div>
 
+        <div className="flex mt-10 gap-4 flex-wrap">
+          <button className="text-white bg-gradient-to-r from-red-600 to-pink-500 shadow-lg shadow-red-500/30 backdrop-blur-md px-6 py-2 rounded-full font-semibold text-sm sm:text-base transition-transform duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl">
+            Buy Tickets
+          </button>
+
+          <button className="text-red-600 bg-white border border-red-300 shadow-md px-6 py-2 rounded-full font-semibold text-sm sm:text-base transition-transform duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-red-50">
+            RSVP
+          </button>
+        </div>
       </div>
     </div>
   );
