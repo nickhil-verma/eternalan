@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Artist from './Artist';
 import Calendar from './Calendar';
+import Locations from './Locations';
 
 const Concerts = () => {
   
@@ -30,7 +31,8 @@ Eternalan is your gateway to unforgettable live music experiences. Discover upco
          <a className='text-white underline flex'>Book Now</a>
         </div>
       </div>
-      <Artist/>
+      {/* <Artist/> */}
+      <Locations/>
       <Calendar/>
       <Footer/>
     </div>

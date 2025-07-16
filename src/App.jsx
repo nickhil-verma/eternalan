@@ -13,6 +13,7 @@ import Concerts from "./components/Concerts";
 import Ticketing from "./components/Ticketing";
 import Sponsor from "./components/Sponsor";
 import About from "./components/About";
+import Partners from "./components/Partners";
 
 const Home = () => (
   <>
@@ -26,6 +27,7 @@ const Home = () => (
       <Hero3 />
       <Talent />
       <Sponsor/>
+      <Partners/>
       {/* <Collection /> */}
       <Footer />
     </main>

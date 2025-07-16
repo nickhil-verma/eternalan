@@ -17,23 +17,55 @@ const Navbar = () => {
       <nav className=" top-0 left-0 w-full p-4 z-50     rounded-b-lg">
         <div className="container mx-auto flex justify-between items-center px-4 md:px-0">
           {/* Logo - Always visible, uppercase, modern font */}
-          
-          <a href="/" className="text-white flex justify-center items-center align-middle text-2xl font-extrabold uppercase tracking-wider rounded-md px-2 py-1 transition-colors duration-300 hover:bg-white/20">
-           <img className="w-16" src="https://i.postimg.cc/fy4rxjsD/Eternalan-Logo.png"></img>&nbsp; eternalan
+
+          <a
+            href="/"
+            className="text-white flex justify-center items-center align-middle text-2xl font-extrabold uppercase tracking-wider rounded-md px-2 py-1 transition-colors duration-300 hover:bg-white/20"
+          >
+          <div className="w-16 h-16 bg-transparent">
+  <div
+    className="w-full h-full bg-red-500"
+    style={{
+      WebkitMaskImage: `url(https://i.postimg.cc/fy4rxjsD/Eternalan-Logo.png)`,
+      WebkitMaskRepeat: 'no-repeat',
+      WebkitMaskSize: 'contain',
+      WebkitMaskPosition: 'center',
+      maskImage: `url(https://i.postimg.cc/fy4rxjsD/Eternalan-Logo.png)`,
+      maskRepeat: 'no-repeat',
+      maskSize: 'contain',
+      maskPosition: 'center',
+    }}
+  />
+</div>
+
+
+            &nbsp; eternalan
           </a>
 
           {/* Desktop Navigation Links - Hidden on small screens */}
           <div className="hidden md:flex space-x-8">
-            <a href="/" className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white">
+            <a
+              href="/"
+              className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white"
+            >
               Home
             </a>
-            <a href="aboutus" className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white">
+            <a
+              href="aboutus"
+              className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white"
+            >
               About
             </a>
-            <a href="/events" className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white">
+            <a
+              href="/events"
+              className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white"
+            >
               Events
             </a>
-            <a href="#contact" className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white">
+            <a
+              href="#contact"
+              className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white"
+            >
               Contact
             </a>
           </div>

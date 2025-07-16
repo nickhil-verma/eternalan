@@ -4,12 +4,12 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 
 const galleryImages = [
-  'https://media.istockphoto.com/id/1392016982/photo/mixed-group-of-business-people-sitting-around-a-table-and-talking.jpg?s=1024x1024&w=is&k=20&c=BJSTan1XQ50Bg3JpA0ZVOPiyniTybeuPDFATtZrD0E8=',
-  'https://media.istockphoto.com/id/2148703154/photo/business-persons-on-meeting-in-the-office.jpg?s=1024x1024&w=is&k=20&c=PD5WCpkAzbJKe7aRfuP4dlZTfB43GPA2f7SQWUrNlsM=',
-  'https://media.istockphoto.com/id/1438610677/photo/multicultural-co-workers-having-a-pleasant-meeting-in-the-conference-room.jpg?s=1024x1024&w=is&k=20&c=NEsaQ0S4fkHtUF_Y2k5hDqKAbA-RDpzox1Lz2J5OzDg=',
-  'https://media.istockphoto.com/id/1200925784/photo/group-of-young-business-professionals-having-a-meeting-creative-office.jpg?s=1024x1024&w=is&k=20&c=KQr2I6s0wIkhF1v9WVwpIgHASUQGDvcNUkE0RpZLYoc=',
-  'https://media.istockphoto.com/id/1770442584/photo/content-marketing-laptop-or-happy-business-people-in-meeting-planning-a-digital-startup.jpg?s=1024x1024&w=is&k=20&c=TVOez9ZoaT0LcoQmJb_hD8iqVp7WRtwX3wW2rVUohtY=',
-  'https://media.istockphoto.com/id/1691351310/photo/business-people-successful-business-professionals-diverse-team-celebrating-business-success.jpg?s=1024x1024&w=is&k=20&c=ItvubBMTT8KBn7Tb0pX-tnfz_4Q4j5knSgRK80i58iY=',
+  'https://i.postimg.cc/fLtXsXjZ/image-1.png',
+  'https://i.postimg.cc/Sxdcfmx0/image-2.png',
+  'https://stadiumdb.com/pictures/stadiums/chn/xian_olympic_sports_center_stadium/xian_olympic_sports_center_stadium16.jpg',
+  'https://www.fast-and-wide.com/images/stories/News/2021_q2/Xian.jpg',
+  'https://aipc.org/wp-content/uploads/2022/06/QICEG_picture-5-1024x683.png',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuyfWx0aJCkhXt71oLayjPsXd7sJ2b5aCtMA&s',
 ];
 
 const About = () => {

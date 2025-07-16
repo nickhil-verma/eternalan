@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="relative flex flex-col p-10 justify-end h-[80vh] w-screen">
         {/* Text block */}
         <div>
-          <span className="text-7xl font-extrabold uppercase text-black">
+          <span className="text-7xl font-extrabold uppercase text-white">
             The Music You
           </span>
           <br />

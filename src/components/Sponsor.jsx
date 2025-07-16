@@ -16,7 +16,7 @@ const Sponsor = () => {
     <section className="w-full py-16 bg-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-white underline uppercase tracking-wider mb-12">
-          Our Partners
+          Our Sponsors
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
