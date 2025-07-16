@@ -3,17 +3,17 @@ import React, { useEffect, useRef } from 'react';
 const slides = [
   {
     title: "Xi’an Olympic Sports Center",
-    desc: "A world-class venue hosting large-scale international events in Xi’an.",
+    desc: "Xi’an Olympic Sports Center (10,000–40,000 capacity)",
     image: "https://i.postimg.cc/65BRzw9f/image-3.png",
   },
   {
     title: 'Qujiang Convention Center',
-    desc: 'A modern convention center surrounded by vibrant cityscapes.',
+    desc: 'Qujiang Convention Center (3,000–5,000 capacity)',
     image: 'https://aipc.org/wp-content/uploads/2022/06/QICEG_picture-5-1024x683.png',
   },
   {
     title: 'Mao Livehouse / Aperture',
-    desc: 'A trendy venue for live music and youth culture in Xi’an.',
+    desc: 'Mao Livehouse / Aperture (800–1,500 capacity)',
     image: 'https://i.postimg.cc/W4qJt1nT/image-4.png',
   },
 ];
