@@ -14,7 +14,7 @@ const galleryImages = [
 
 const About = () => {
   return (
-    <div className="  text-white font-sans overflow-x-hidden">
+    <div className="text-white font-sans overflow-x-hidden">
       <Navbar />
 
       {/* Hero Section */}
@@ -22,8 +22,12 @@ const About = () => {
         <BackgroundVideo url="https://assets.mixkit.co/videos/4192/4192-720.mp4" />
         <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-start p-12 z-10">
           <h1 className="text-6xl md:text-8xl font-extrabold uppercase mb-4">About Us</h1>
-          <p className="text-lg md:text-2xl max-w-2xl">
-            We deliver the best concerts all around the world with unmatched energy and unforgettable experiences.
+          <p className="text-sm md:text-lg max-w-3xl leading-tight-">
+            Eternalan is a forward-thinking entertainment company dedicated to curating and hosting unforgettable concert experiences.
+            Our mission is to enhance live entertainment by bridging global hip-hop culture with Chinese audiences.
+            By bringing leading international hip-hop artists to China, we aim to foster cross-cultural exchange,
+            elevate youth culture, and redefine the concert experience across borders.
+            At Eternalan, we don’t just organize events — we create movements that celebrate rhythm, identity, and global connection.
           </p>
         </div>
       </div>
@@ -54,7 +58,7 @@ const About = () => {
           {galleryImages.map((img, idx) => (
             <div
               key={idx}
-              className="w-full h-72   overflow-hidden shadow-lg hover:scale-105 transition-transform"
+              className="w-full h-72 overflow-hidden shadow-lg hover:scale-105 transition-transform"
             >
               <img
                 src={img}
@@ -65,7 +69,8 @@ const About = () => {
           ))}
         </div>
       </div>
-      <Footer/>
+
+      <Footer />
     </div>
   );
 };

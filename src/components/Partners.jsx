@@ -3,7 +3,7 @@ import React from 'react';
 const Partners = () => {
   return (
     <div className='w-screen h-screen bg-white px-10 py-10'>
-      <h1 className='text-3xl font-extrabold uppercase text-center mb-10'>
+      <h1 className='text-7xl font-extrabold uppercase text-center mb-10'>
         Our Partners
       </h1>
       <div className='flex h-[80%]'>
@@ -21,7 +21,7 @@ const Partners = () => {
           <h2 className='text-2xl uppercase font-bold mb-4 text-green-800'>
             Agricultural Bank of China
           </h2>
-          <p className='text-lg text-gray-700 mb-6'>
+          <p className='text-lg leading-tight text-gray-700 mb-6'>
             The Agricultural Bank of China (ABC), one of the world's largest
             financial institutions, proudly partners with us to promote global
             cultural exchange through music and the arts. As a strategic sponsor,

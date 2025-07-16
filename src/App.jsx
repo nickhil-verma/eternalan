@@ -14,6 +14,7 @@ import Ticketing from "./components/Ticketing";
 import Sponsor from "./components/Sponsor";
 import About from "./components/About";
 import Partners from "./components/Partners";
+import Locations from "./components/Locations";
 
 const Home = () => (
   <>
@@ -26,7 +27,8 @@ const Home = () => (
       <Hero2 />
       <Hero3 />
       <Talent />
-      <Sponsor/>
+      <Locations/>
+      {/* <Sponsor/> */}
       <Partners/>
       {/* <Collection /> */}
       <Footer />
