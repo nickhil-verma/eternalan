@@ -98,7 +98,7 @@ const Navbar = () => {
           {/* Mobile Navigation Links */}
           <nav className="flex flex-col space-y-8 text-center">
             <a
-              href="#"
+              href="/"
               onClick={toggleMobileMenu} // Close menu on link click
               className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-8 decoration-4 decoration-white"
             >

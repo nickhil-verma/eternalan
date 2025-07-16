@@ -5,10 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const LoadingPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Detect when all assets are loaded
   useEffect(() => {
     const handleLoad = () => {
-      setTimeout(() => setIsLoaded(true), 1000); // small delay for effect
+      setTimeout(() => setIsLoaded(true), 1000);
     };
 
     if (document.readyState === "complete") {
@@ -27,13 +26,13 @@ const LoadingPage = () => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -100 }}
           transition={{ duration: 1 }}
-          className="fixed top-0 left-0 w-screen h-screen bg-black flex items-center justify-center z-50"
+          className="fixed top-0 left-0 w-screen h-screen bg-black flex items-center justify-center z-50 p-4"
         >
-          <h1 className="text-white text-5xl font-extrabold tracking-widest uppercase">
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-widest uppercase text-center">
             <Typewriter
-              words={['eternalan']}
+              words={["eternalan"]}
               cursor
-              cursorStyle='_'
+              cursorStyle="_"
               typeSpeed={100}
               deleteSpeed={50}
               delaySpeed={1000}

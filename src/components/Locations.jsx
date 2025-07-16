@@ -32,35 +32,38 @@ const Locations = () => {
           : container.scrollLeft + container.clientWidth;
 
       container.scrollTo({ left: nextScroll, behavior: 'smooth' });
-    }, 4500); // Change slide every 3s
+    }, 4500);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="w-screen p-10   overflow-hidden bg-black text-white">
-        <h1 className='text-3xl uppercase font-extrabold underline my-5'>host location</h1>
+    <div className="w-full overflow-hidden bg-black text-white py-10 px-4 sm:px-10">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl uppercase font-extrabold underline mb-6">
+        Host Locations
+      </h1>
       <div
         ref={carouselRef}
-        className="flex overflow-x-scroll m-6 no-scrollbar scroll-smooth snap-x snap-mandatory"
+        className="flex overflow-x-scroll no-scrollbar scroll-smooth snap-x snap-mandatory"
       >
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="min-w-full h-screen relative snap-start"
+            className="min-w-full sm:h-[90vh] min-h-[80vh] relative snap-start"
           >
             <img
               src={slide.image}
               alt={slide.title}
               className="w-full h-full object-cover"
             />
+
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
 
             {/* Text Overlay */}
-            <div className="absolute bottom-10 left-10 max-w-xl z-10">
-              <h2 className="text-4xl uppercase font-bold mb-2">{slide.title}</h2>
-              <p className="text-lg text-white/80">{slide.desc}</p>
+            <div className="absolute bottom-6 left-4 sm:bottom-10 sm:left-10 max-w-md sm:max-w-xl z-20">
+              <h2 className="text-2xl sm:text-4xl uppercase font-bold mb-2">{slide.title}</h2>
+              <p className="text-sm sm:text-lg text-white/80">{slide.desc}</p>
             </div>
           </div>
         ))}
