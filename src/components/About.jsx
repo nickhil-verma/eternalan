@@ -67,7 +67,7 @@ const Footer = () => (
 
 const About = () => {
   return (
-    <div className="mt-20 text-white font-sans overflow-x-hidden bg-black">
+    <div className=" text-white font-sans overflow-x-hidden bg-black">
       <Navbar />
 
       {/* Hero Section */}
