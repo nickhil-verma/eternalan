@@ -1,13 +1,10 @@
 import React, { useState, useMemo } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
 
 // Main Ticketing Component
 const Ticketing = () => {
   const TICKET_PRICE = 10;
   
-  // New theater layout configuration
-  // Each number represents the number of seats in that row, starting from the front.
+  // Theater layout configuration
   const rowConfig = [12, 14, 14, 16, 16, 18, 18, 20, 20, 22];
   const TOTAL_SEATS = rowConfig.reduce((sum, count) => sum + count, 0);
 
@@ -20,7 +17,7 @@ const Ticketing = () => {
     return occupied;
   }, [TOTAL_SEATS]);
 
-  // State to manage all seats (still a flat array for easier state management)
+  // State to manage all seats
   const [seats, setSeats] = useState(
     Array.from({ length: TOTAL_SEATS }, (_, index) => ({
       id: index,
@@ -29,7 +26,7 @@ const Ticketing = () => {
     }))
   );
 
-  // Handler for selecting a seat (no changes needed here)
+  // Handler for selecting a seat
   const handleSeatClick = (seatId) => {
     setSeats((prevSeats) =>
       prevSeats.map((seat) => {
@@ -54,24 +51,24 @@ const Ticketing = () => {
     const { isOccupied, isSelected } = seatData;
     
     const seatClass = isOccupied
-      ? 'bg-white cursor-not-allowed'
+      ? 'bg-red-900 cursor-not-allowed border-black/40'
       : isSelected
-      ? 'bg-red-600 hover:bg-red-700'
-      : 'bg-gray-700 hover:bg-gray-500';
+      ? 'bg-white border-white shadow-lg shadow-white/20'
+      : 'bg-transparent border-white/30 hover:border-white/60 hover:bg-white/10';
 
     return (
       <div
-        className={`w-5 h-5 md:w-6 md:h-6 m-1 rounded-md transition-colors duration-200 ${seatClass}`}
+        className={`w-6 h-6 md:w-8 md:h-8 m-1 rounded-sm border-2 transition-all duration-300 cursor-pointer ${seatClass} backdrop-blur-sm`}
         onClick={() => onClick(seatData.id)}
       />
     );
   };
 
   // Legend Item Component
-  const LegendItem = ({ color, text }) => (
-    <div className="flex items-center space-x-2">
-      <div className={`w-5 h-5 rounded-md ${color}`}></div>
-      <span className="text-gray-400 text-sm">{text}</span>
+  const LegendItem = ({ bgColor, borderColor, text }) => (
+    <div className="flex items-center space-x-3">
+      <div className={`w-6 h-6 rounded-sm border-2 ${bgColor} ${borderColor} backdrop-blur-sm`}></div>
+      <span className="text-white/80 text-sm font-medium tracking-wide">{text}</span>
     </div>
   );
 
@@ -89,55 +86,81 @@ const Ticketing = () => {
     ));
   };
 
-
   return (
-    <div className="bg-gray-800 min-h-screen flex flex-col font-sans text-white">
-        <Navbar/>
+    <div className="bg-black min-h-screen flex flex-col font-mono text-white relative overflow-hidden">
+        {/* Animated background pattern */}
+        <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,white/5,transparent)] animate-pulse"></div>
+        </div>
         
-        {/* Main content area that grows to push footer down */}
-        <main className="flex-grow flex flex-col items-center justify-center p-4">
-            <div className="w-full max-w-5xl">
+        {/* Main content area */}
+        <main className="flex-grow flex flex-col items-center justify-center p-8 relative z-10">
+            <div className="w-full max-w-6xl">
+                {/* Header */}
+                <div className="text-center mb-12">
+                    <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
+                        SELECT SEATS
+                    </h1>
+                    <div className="w-24 h-0.5 bg-white mx-auto"></div>
+                </div>
+
                 {/* Screen Display */}
-                <div className="relative w-full h-16 mb-8">
-                    <div className="absolute inset-x-0 top-0 h-16 bg-white rounded-t-full opacity-20 filter blur-xl"></div>
-                    <div className="w-3/4 h-2 mx-auto bg-white rounded-b-lg shadow-lg shadow-white"></div>
-                    <p className="text-center text-xl font-bold mt-2 tracking-widest">STAGE</p>
+                <div className="relative w-full mb-16">
+                    <div className="w-full max-w-4xl mx-auto h-1 bg-gradient-to-r from-transparent via-white to-transparent rounded-full shadow-lg shadow-white/20"></div>
+                    <div className="w-3/4 h-0.5 mx-auto bg-white/60 rounded-full mt-2"></div>
+                    <p className="text-center text-lg font-bold mt-6 tracking-[0.5em] text-white/80">STAGE</p>
                 </div>
 
                 {/* Seat Matrix */}
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center mb-16 p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
                     {renderSeats()}
                 </div>
 
                 {/* Legend */}
-                <div className="flex justify-center items-center space-x-6 mt-8 p-4 bg-gray-900/50 rounded-lg">
-                    <LegendItem color="bg-gray-700" text="Vacant" />
-                    <LegendItem color="bg-red-600" text="Selected" />
-                    <LegendItem color="bg-white" text="Occupied" />
+                <div className="flex justify-center items-center space-x-12 mb-12 p-6 bg-black/40 backdrop-blur-md rounded-xl border border-white/10">
+                    <LegendItem 
+                        bgColor="bg-transparent" 
+                        borderColor="border-white/30" 
+                        text="AVAILABLE" 
+                    />
+                    <LegendItem 
+                        bgColor="bg-white" 
+                        borderColor="border-white" 
+                        text="SELECTED" 
+                    />
+                    <LegendItem 
+                        bgColor="bg-red-900" 
+                        borderColor="border-black/40" 
+                        text="OCCUPIED" 
+                    />
                 </div>
 
                 {/* Checkout Summary */}
-                <div className="mt-8 text-center">
+                <div className="text-center">
                 {selectedSeatsCount > 0 ? (
-                    <>
-                    <p className="text-lg">
-                        You have selected <span className="font-bold text-red-500">{selectedSeatsCount}</span> seat{selectedSeatsCount > 1 ? 's' : ''}.
-                    </p>
-                    <p className="text-2xl font-bold mt-2">
-                        Total Price: <span className="text-red-500">${totalPrice}</span>
-                    </p>
-                    <button className="mt-6 bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-colors duration-300 shadow-lg shadow-red-600/30">
-                        Proceed to Checkout
-                    </button>
-                    </>
+                    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                        <p className="text-xl mb-4 text-white/90">
+                            <span className="font-bold text-white">{selectedSeatsCount}</span> seat{selectedSeatsCount > 1 ? 's' : ''} selected
+                        </p>
+                        <p className="text-3xl font-bold mb-8 tracking-wide">
+                            <span className="text-white">${totalPrice}</span>
+                        </p>
+                        <button className="bg-white text-black font-bold py-4 px-12 rounded-lg hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/20 tracking-wide uppercase">
+                            Proceed to Checkout
+                        </button>
+                    </div>
                 ) : (
-                    <p className="text-lg text-gray-400">Please select a seat to continue.</p>
+                    <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                        <p className="text-xl text-white/60 tracking-wide">Select seats to continue</p>
+                    </div>
                 )}
                 </div>
             </div>
         </main>
-        {/* <div className='h-[20vh] w-screen bg-white'></div>
-        <Footer/> */}
+        
+        {/* Footer line */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
     </div>
   );
 };

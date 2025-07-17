@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-// Import lucide-react for modern icons
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-  // State to manage the visibility of the mobile menu
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Function to toggle the mobile menu state
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -14,114 +11,114 @@ const Navbar = () => {
   return (
     <>
       {/* Main Navbar */}
-      <nav className=" top-0 left-0 w-full p-4 z-50     rounded-b-lg">
-        <div className="container mx-auto flex justify-between items-center px-4 md:px-0">
-          {/* Logo - Always visible, uppercase, modern font */}
-
+      <nav className="fixed top-0 left-0 right-0 z-50 h-[80px] bg-black/95 backdrop-blur-md border-b border-[#EF4444]/20">
+        <div className="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
+          {/* Logo */}
           <a
             href="/"
-            className="text-white flex justify-center items-center align-middle text-2xl font-extrabold uppercase tracking-wider rounded-md px-2 py-1 transition-colors duration-300 hover:bg-white/20"
+            className="text-white flex items-center text-2xl font-extrabold uppercase tracking-wider relative"
           >
-          <div className="w-16 h-16 bg-transparent">
-  <div
-    className="w-full h-full bg-red-500"
-    style={{
-      WebkitMaskImage: `url(https://i.postimg.cc/fy4rxjsD/Eternalan-Logo.png)`,
-      WebkitMaskRepeat: 'no-repeat',
-      WebkitMaskSize: 'contain',
-      WebkitMaskPosition: 'center',
-      maskImage: `url(https://i.postimg.cc/fy4rxjsD/Eternalan-Logo.png)`,
-      maskRepeat: 'no-repeat',
-      maskSize: 'contain',
-      maskPosition: 'center',
-    }}
-  />
-</div>
-
-
-            &nbsp; eternalan
+            <div className="w-16 h-16 bg-transparent mr-2">
+              <div
+                className="w-full h-full bg-red-500"
+                style={{
+                  WebkitMaskImage: `url(https://i.postimg.cc/fy4rxjsD/Eternalan-Logo.png)`,
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskPosition: 'center',
+                  maskImage: `url(https://i.postimg.cc/fy4rxjsD/Eternalan-Logo.png)`,
+                  maskRepeat: 'no-repeat',
+                  maskSize: 'contain',
+                  maskPosition: 'center',
+                }}
+              />
+            </div>
+            ETERNALAN
+            <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-[#EF4444]"></div>
           </a>
 
-          {/* Desktop Navigation Links - Hidden on small screens */}
-          <div className="hidden md:flex space-x-8">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-12">
             <a
               href="/"
-              className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white"
+              className="text-white hover:text-[#EF4444] transition-all duration-500 font-bold tracking-widest text-sm relative group"
             >
-              Home
+              HOME
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#EF4444] group-hover:w-full transition-all duration-500"></div>
             </a>
             <a
               href="aboutus"
-              className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white"
+              className="text-white hover:text-[#EF4444] transition-all duration-500 font-bold tracking-widest text-sm relative group"
             >
-              About
+              ABOUT
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#EF4444] group-hover:w-full transition-all duration-500"></div>
             </a>
             <a
               href="/events"
-              className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white"
+              className="text-white hover:text-[#EF4444] transition-all duration-500 font-bold tracking-widest text-sm relative group"
             >
-              Events
+              EVENTS
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#EF4444] group-hover:w-full transition-all duration-500"></div>
             </a>
             <a
               href="#contact"
-              className="text-white text-lg font-medium uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-4 decoration-2 decoration-white"
+              className="text-white hover:text-[#EF4444] transition-all duration-500 font-bold tracking-widest text-sm relative group"
             >
-              Contact
+              CONTACT
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#EF4444] group-hover:w-full transition-all duration-500"></div>
             </a>
           </div>
 
-          {/* Hamburger Icon - Visible on small screens, hidden on medium and larger */}
+          {/* Hamburger Icon */}
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
               className="text-white focus:outline-none focus:ring-2 focus:ring-white rounded-md p-2"
               aria-label="Open mobile menu"
             >
-              <Menu size={28} /> {/* Lucide Menu icon */}
+              <Menu size={28} />
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay - Conditionally rendered based on isMobileMenuOpen state */}
+      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 bg-black z-[100] flex flex-col items-center justify-center animate-fade-in-down">
-          {/* Close Button (X icon) */}
           <button
             onClick={toggleMobileMenu}
             className="absolute top-6 right-6 text-white focus:outline-none focus:ring-2 focus:ring-white rounded-md p-2"
             aria-label="Close mobile menu"
           >
-            <X size={36} /> {/* Lucide X icon */}
+            <X size={36} />
           </button>
 
-          {/* Mobile Navigation Links */}
           <nav className="flex flex-col space-y-8 text-center">
             <a
               href="/"
-              onClick={toggleMobileMenu} // Close menu on link click
-              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-8 decoration-4 decoration-white"
+              onClick={toggleMobileMenu}
+              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#EF4444] hover:underline underline-offset-8 decoration-4 decoration-[#EF4444]"
             >
               Home
             </a>
             <a
               href="/aboutus"
-              onClick={toggleMobileMenu} // Close menu on link click
-              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-8 decoration-4 decoration-white"
+              onClick={toggleMobileMenu}
+              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#EF4444] hover:underline underline-offset-8 decoration-4 decoration-[#EF4444]"
             >
               About
             </a>
             <a
               href="/events"
-              onClick={toggleMobileMenu} // Close menu on link click
-              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-8 decoration-4 decoration-white"
+              onClick={toggleMobileMenu}
+              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#EF4444] hover:underline underline-offset-8 decoration-4 decoration-[#EF4444]"
             >
               Events
             </a>
             <a
               href="#contact"
-              onClick={toggleMobileMenu} // Close menu on link click
-              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-gray-300 hover:underline underline-offset-8 decoration-4 decoration-white"
+              onClick={toggleMobileMenu}
+              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#EF4444] hover:underline underline-offset-8 decoration-4 decoration-[#EF4444]"
             >
               Contact
             </a>
@@ -129,7 +126,7 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Tailwind Custom Animation (add this to your main CSS or a style block if not using a build process that handles @keyframes) */}
+      {/* Fade Animation */}
       <style jsx>{`
         @keyframes fade-in-down {
           from {

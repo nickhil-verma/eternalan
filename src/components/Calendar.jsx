@@ -27,7 +27,6 @@ const Calendar = () => {
 
   const daysInMonth = currentMonth.daysInMonth();
   const startDay = currentMonth.startOf('month').weekday();
-  // const today = dayjs(); // Not directly used in render, can be removed or used for specific styling if needed
 
   const handlePrevMonth = () => {
     setCurrentMonth(currentMonth.subtract(1, 'month'));
@@ -43,7 +42,7 @@ const Calendar = () => {
     const days = [];
     // Render empty divs for the days before the 1st of the month
     for (let i = 0; i < startDay; i++) {
-      days.push(<div key={`empty-${i}`} className="w-full h-12" />);
+      days.push(<div key={`empty-${i}`} className="w-full h-14" />);
     }
 
     // Render days of the month
@@ -52,7 +51,7 @@ const Calendar = () => {
       const dateStr = dateObj.format('YYYY-MM-DD');
       const isHighlighted = highlightedDates[dateStr];
       const isSelected = selectedDate && selectedDate.isSame(dateObj, 'day');
-      const isPast = dateObj.isBefore(dayjs(), 'day'); // Check if date is in the past
+      const isPast = dateObj.isBefore(dayjs(), 'day');
       const isCurrentDay = dateObj.isToday();
 
       days.push(
@@ -60,17 +59,17 @@ const Calendar = () => {
           key={day}
           onClick={() => setSelectedDate(dateObj)}
           className={`
-            w-full h-12 flex items-center justify-center rounded-lg text-lg font-medium
-            transition-all duration-200 ease-in-out transform
-            ${isSelected ? 'bg-red-600 text-white shadow-lg scale-105' : ''}
-            ${!isSelected && isHighlighted ? 'bg-yellow-400 text-gray-900 shadow-md' : ''}
-            ${!isSelected && !isHighlighted && isPast ? 'text-gray-500 cursor-not-allowed opacity-60' : ''}
-            ${!isSelected && !isHighlighted && !isPast && isCurrentDay ? 'border-2 border-red-500 text-red-500' : ''}
-            ${!isSelected && !isHighlighted && !isPast && !isCurrentDay ? 'text-white hover:bg-white/20 hover:scale-105' : ''}
-            ${isPast && isHighlighted ? 'opacity-70' : ''} /* Soften highlighted past dates */
-            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500
+            w-full h-14 flex items-center justify-center text-lg font-bold
+            transition-all duration-150 ease-out
+            ${isSelected ? 'bg-red-500 text-white' : ''}
+            ${!isSelected && isHighlighted ? 'bg-white text-black border-2 border-red-500' : ''}
+            ${!isSelected && !isHighlighted && isPast ? 'text-gray-500 cursor-not-allowed' : ''}
+            ${!isSelected && !isHighlighted && !isPast && isCurrentDay ? 'bg-black text-white border-2 border-red-500' : ''}
+            ${!isSelected && !isHighlighted && !isPast && !isCurrentDay ? 'text-black hover:bg-gray-100' : ''}
+            ${isPast && isHighlighted ? 'opacity-50' : ''}
+            focus:outline-none focus:ring-2 focus:ring-red-500
           `}
-          disabled={isPast && !isHighlighted} // Disable interaction for non-highlighted past dates
+          disabled={isPast && !isHighlighted}
         >
           {day}
         </button>
@@ -83,87 +82,136 @@ const Calendar = () => {
   const concert = selectedDateStr ? highlightedDates[selectedDateStr] : null;
 
   return (
-    <div className="min-h-screen  text-white p-4 sm:p-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-        {/* Calendar Section */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-2xl flex flex-col">
-          <div className="flex justify-between items-center mb-6">
-            <button
-              onClick={handlePrevMonth}
-              className="p-2 rounded-full hover:bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-              aria-label="Previous Month"
-            >
-              <ArrowLeft className="text-white w-6 h-6" />
-            </button>
-            <h2 className="text-3xl font-extrabold text-white tracking-wide">
-              {currentMonth.format('MMMM YYYY')}
-            </h2>
-            <button
-              onClick={handleNextMonth}
-              className="p-2 rounded-full hover:bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-              aria-label="Next Month"
-            >
-              <ArrowRight className="text-white w-6 h-6" />
-            </button>
-          </div>
+    <div className="min-h-screen bg-white text-black">
+      {/* Header */}
+      <div className="bg-black text-white px-8 py-6">
+        <h1 className="text-4xl font-black tracking-tight">CONCERT CALENDAR</h1>
+        <p className="text-gray-300 mt-2 text-lg">Select a date to view event details</p>
+      </div>
 
-          {/* Weekdays */}
-          <div className="grid grid-cols-7 text-center text-sm sm:text-base font-semibold text-gray-300 mb-4">
-            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-              <div key={day} className="py-2">{day}</div>
-            ))}
-          </div>
-
-          {/* Dates */}
-          <div className="grid grid-cols-7 gap-2 flex-grow">
-            {renderDays()}
-          </div>
-        </div>
-
-        {/* Details Section */}
-        <div className="text-white bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-2xl flex flex-col justify-between min-h-[250px] md:min-h-full">
-          <div>
-            <h2 className="text-3xl font-extrabold mb-5 text-red-400">Event Details</h2>
-            {selectedDate && (
-              <p className="text-xl font-semibold mb-4">
-                Selected Date: {selectedDate.format('MMM DD, YYYY')}
-              </p>
-            )}
-
-            {concert ? (
-              <div className="space-y-3">
-                <p className="text-2xl font-bold flex items-center">
-                  <span className="mr-2 text-red-400">🎤</span> {concert.artist}
-                </p>
-                <p className="text-xl flex items-center">
-                  <span className="mr-2 text-red-400">🎶</span> {concert.concert}
-                </p>
-                <p className="text-lg text-gray-300 flex items-center">
-                  <span className="mr-2 text-red-400">📍</span> {concert.venue}
-                </p>
+      <div className="max-w-7xl mx-auto p-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Calendar Section */}
+          <div className="lg:col-span-2">
+            <div className="bg-white border-2 border-black p-8">
+              {/* Calendar Header */}
+              <div className="flex justify-between items-center mb-8">
+                <button
+                  onClick={handlePrevMonth}
+                  className="w-12 h-12 flex items-center justify-center bg-black text-white hover:bg-red-500 transition-colors duration-150"
+                  aria-label="Previous Month"
+                >
+                  <ArrowLeft className="w-6 h-6" />
+                </button>
+                <h2 className="text-3xl font-black uppercase tracking-wider">
+                  {currentMonth.format('MMMM YYYY')}
+                </h2>
+                <button
+                  onClick={handleNextMonth}
+                  className="w-12 h-12 flex items-center justify-center bg-black text-white hover:bg-red-500 transition-colors duration-150"
+                  aria-label="Next Month"
+                >
+                  <ArrowRight className="w-6 h-6" />
+                </button>
               </div>
-            ) : (
-              <p className="text-lg text-gray-400">
-                {selectedDate ? "No event scheduled for this date." : "Please select a date to view event details."}
-              </p>
-            )}
+
+              {/* Weekdays */}
+              <div className="grid grid-cols-7 mb-4">
+                {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map(day => (
+                  <div key={day} className="h-12 flex items-center justify-center bg-gray-100 font-bold text-sm tracking-wider border-r border-gray-300 last:border-r-0">
+                    {day}
+                  </div>
+                ))}
+              </div>
+
+              {/* Calendar Grid */}
+              <div className="grid grid-cols-7 border-t border-l border-gray-300">
+                {renderDays().map((day, index) => (
+                  <div key={index} className="border-r border-b border-gray-300 last:border-r-0">
+                    {day}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Legend */}
+            <div className="mt-6 flex flex-wrap gap-4 text-sm font-bold">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-red-500"></div>
+                <span>SELECTED</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-white border-2 border-red-500"></div>
+                <span>EVENT AVAILABLE</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-black"></div>
+                <span>TODAY</span>
+              </div>
+            </div>
           </div>
 
-          <a
-            href="/ticketing"
-            className={`mt-8 inline-block text-center py-3 px-6 rounded-full text-lg font-bold
-              transition-all duration-300 ease-in-out transform
-              ${concert ? 'bg-red-500 hover:bg-red-600 shadow-lg hover:scale-105' : 'bg-gray-700 cursor-not-allowed opacity-70'}
-            `}
-            style={{ width: 'fit-content' }} // Ensures button width fits content
-            onClick={(e) => {
-                if (!concert) {
-                    e.preventDefault(); // Prevent navigation if no concert is selected
-                }
-            }}
-          >
-            {concert ? 'Book Now' : 'Select a Date'}
-          </a>
+          {/* Details Section */}
+          <div className="bg-black text-white p-8">
+            <div className="h-full flex flex-col">
+              <h2 className="text-2xl font-black mb-8 tracking-wider">EVENT DETAILS</h2>
+              
+              {selectedDate && (
+                <div className="mb-6">
+                  <p className="text-red-500 font-bold text-sm uppercase tracking-wider mb-2">Selected Date</p>
+                  <p className="text-2xl font-black">
+                    {selectedDate.format('MMM DD, YYYY').toUpperCase()}
+                  </p>
+                </div>
+              )}
+
+              {concert ? (
+                <div className="space-y-6 flex-grow">
+                  <div>
+                    <p className="text-red-500 font-bold text-sm uppercase tracking-wider mb-2">Artist</p>
+                    <p className="text-2xl font-black">{concert.artist.toUpperCase()}</p>
+                  </div>
+                  <div>
+                    <p className="text-red-500 font-bold text-sm uppercase tracking-wider mb-2">Concert</p>
+                    <p className="text-xl font-bold">{concert.concert}</p>
+                  </div>
+                  <div>
+                    <p className="text-red-500 font-bold text-sm uppercase tracking-wider mb-2">Venue</p>
+                    <p className="text-lg">{concert.venue}</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex-grow flex items-center justify-center">
+                  <p className="text-gray-400 text-center text-lg">
+                    {selectedDate ? "NO EVENT SCHEDULED" : "SELECT A DATE TO VIEW DETAILS"}
+                  </p>
+                </div>
+              )}
+
+              <div className="mt-8">
+               <a href='/ticketing'>
+                <button
+                  className={`w-full py-4 font-black text-lg tracking-wider transition-all duration-150
+                    
+                    ${concert 
+                      ? 'bg-red-500 hover:bg-red-600 text-white' 
+                      : 'bg-gray-800 text-gray-500 cursor-not-allowed'
+                    }
+                  `}
+                  disabled={!concert}
+                  onClick={() => {
+                    if (concert) {
+                      // Handle booking logic here
+                      console.log('Booking for:', concert);
+                    }
+                  }}
+                >
+                  {concert ? 'BOOK NOW' : 'SELECT A DATE'}
+                </button>
+               </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

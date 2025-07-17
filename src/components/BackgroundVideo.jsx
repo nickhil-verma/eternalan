@@ -12,7 +12,7 @@ const BackgroundVideo = ({ url }) => {
   }, [url]);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full z-[-10] overflow-hidden">
+    <div className="fixed top-0 left-0 w-screen h-full z-[-10] overflow-hidden">
       <video
         ref={videoRef}
         src={url}

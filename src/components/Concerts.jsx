@@ -8,7 +8,7 @@ import Locations from './Locations';
 
 const Concerts = () => {
   return (
-    <div className="relative">
+    <div className="relative mt-24">
       <BackgroundVideo url="https://assets.mixkit.co/videos/830/830-720.mp4" />
       <Navbar />
 
@@ -31,7 +31,7 @@ const Concerts = () => {
         {/* Right: Button */}
         <div className="w-full sm:w-auto flex justify-start sm:justify-end">
           <a
-            href="#"
+            href="/ticketing"
             className="text-white underline text-base sm:text-lg hover:text-gray-300 transition"
           >
             Book Now

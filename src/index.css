@@ -1,33 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- .outlined-text {
+
+.outlined-text {
   -webkit-text-stroke: 2px white;
   color: transparent;
 }
 
-html, body, #root {
+  body, #root {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+ overflow-x: hidden;
 }
-.talent-gradient {
-  background: linear-gradient(to bottom, transparent 0%, black 30%, black 100%);
-}
-/* global.css or App.css */
-.scrollbar-none::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-none {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.footer-clip-path {
-  clip-path: polygon(0 0, 100% 8%, 100% 100%, 0% 100%);
-}
+
+ 
+
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -39,17 +29,4 @@ html, body, #root {
   }
 }
 
-.animate-slideIn {
-  animation: slideIn 0.8s ease-out both;
-}
-
-/* In index.css */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
+ 
