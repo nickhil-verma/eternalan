@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       {/* Main Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 h-[80px] bg-black/95 backdrop-blur-md border-b border-[#EF4444]/20">
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 h-[80px] transition-all duration-300    ${
+          isScrolled ? "bg-black border-b border-[#EF4444]/20 " : "bg-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
           {/* Logo */}
           <a
@@ -23,13 +37,13 @@ const Navbar = () => {
                 className="w-full h-full bg-red-500"
                 style={{
                   WebkitMaskImage: `url(https://i.postimg.cc/fy4rxjsD/Eternalan-Logo.png)`,
-                  WebkitMaskRepeat: 'no-repeat',
-                  WebkitMaskSize: 'contain',
-                  WebkitMaskPosition: 'center',
+                  WebkitMaskRepeat: "no-repeat",
+                  WebkitMaskSize: "contain",
+                  WebkitMaskPosition: "center",
                   maskImage: `url(https://i.postimg.cc/fy4rxjsD/Eternalan-Logo.png)`,
-                  maskRepeat: 'no-repeat',
-                  maskSize: 'contain',
-                  maskPosition: 'center',
+                  maskRepeat: "no-repeat",
+                  maskSize: "contain",
+                  maskPosition: "center",
                 }}
               />
             </div>
@@ -39,34 +53,19 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-12">
-            <a
-              href="/"
-              className="text-white hover:text-[#EF4444] transition-all duration-500 font-bold tracking-widest text-sm relative group"
-            >
-              HOME
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#EF4444] group-hover:w-full transition-all duration-500"></div>
-            </a>
-            <a
-              href="aboutus"
-              className="text-white hover:text-[#EF4444] transition-all duration-500 font-bold tracking-widest text-sm relative group"
-            >
-              ABOUT
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#EF4444] group-hover:w-full transition-all duration-500"></div>
-            </a>
-            <a
-              href="/events"
-              className="text-white hover:text-[#EF4444] transition-all duration-500 font-bold tracking-widest text-sm relative group"
-            >
-              EVENTS
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#EF4444] group-hover:w-full transition-all duration-500"></div>
-            </a>
-            <a
-              href="#contact"
-              className="text-white hover:text-[#EF4444] transition-all duration-500 font-bold tracking-widest text-sm relative group"
-            >
-              CONTACT
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#EF4444] group-hover:w-full transition-all duration-500"></div>
-            </a>
+            {["/", "/aboutus", "/events", "#contact"].map((href, i) => {
+              const label = ["HOME", "ABOUT", "EVENTS", "CONTACT"][i];
+              return (
+                <a
+                  key={href}
+                  href={href}
+                  className="text-white hover:text-[#EF4444] transition-all duration-500 font-bold tracking-widest text-sm relative group"
+                >
+                  {label}
+                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#EF4444] group-hover:w-full transition-all duration-500"></div>
+                </a>
+              );
+            })}
           </div>
 
           {/* Hamburger Icon */}
@@ -94,34 +93,19 @@ const Navbar = () => {
           </button>
 
           <nav className="flex flex-col space-y-8 text-center">
-            <a
-              href="/"
-              onClick={toggleMobileMenu}
-              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#EF4444] hover:underline underline-offset-8 decoration-4 decoration-[#EF4444]"
-            >
-              Home
-            </a>
-            <a
-              href="/aboutus"
-              onClick={toggleMobileMenu}
-              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#EF4444] hover:underline underline-offset-8 decoration-4 decoration-[#EF4444]"
-            >
-              About
-            </a>
-            <a
-              href="/events"
-              onClick={toggleMobileMenu}
-              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#EF4444] hover:underline underline-offset-8 decoration-4 decoration-[#EF4444]"
-            >
-              Events
-            </a>
-            <a
-              href="#contact"
-              onClick={toggleMobileMenu}
-              className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#EF4444] hover:underline underline-offset-8 decoration-4 decoration-[#EF4444]"
-            >
-              Contact
-            </a>
+            {["/", "/aboutus", "/events", "#contact"].map((href, i) => {
+              const label = ["Home", "About", "Events", "Contact"][i];
+              return (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={toggleMobileMenu}
+                  className="text-white text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#EF4444] hover:underline underline-offset-8 decoration-4 decoration-[#EF4444]"
+                >
+                  {label}
+                </a>
+              );
+            })}
           </nav>
         </div>
       )}
