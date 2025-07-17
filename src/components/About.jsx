@@ -170,7 +170,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
           <div className="relative overflow-hidden group">
             <video
-              src="https://assets.mixkit.co/videos/15855/15855-720.mp4"
+              src="https://assets.mixkit.co/active_storage/video_items/100506/1725309855/100506-video-720.mp4"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
               autoPlay
               muted
