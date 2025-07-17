@@ -14,7 +14,7 @@ const slides = [
   {
     title: 'Mao Livehouse / Aperture',
     desc: 'Mao Livehouse / Aperture (800–1,500 capacity)',
-    image: 'https://i.postimg.cc/W4qJt1nT/image-4.png',
+    image: 'https://i.postimg.cc/m2XbfQsR/ea7a97f85083eb01f212829d830d688f-1.jpg',
   },
 ];
 
