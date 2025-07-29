@@ -13,6 +13,7 @@ import Concerts from "./components/Concerts";
 import Ticketing from "./components/Ticketing";
 import Sponsor from "./components/Sponsor";
 import About from "./components/About";
+import Support from "./components/Support"
 import Partners from "./components/Partners";
 import Locations from "./components/Locations";
 
@@ -46,6 +47,7 @@ const App = () => {
            <Route path="/ticketing" element={<Ticketing />} />
            <Route path="/aboutus" element={<About />} />
         </Routes>
+        <Support/>
       </div>
     </Router>
   );
